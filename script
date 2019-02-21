@@ -1,0 +1,22 @@
+#!bin/bash
+
+#creates a user named after first arguments
+sudo useradd $1
+
+sudo mkdir /home/$1/.ssh
+
+echo "please enter path for public keys"
+read KeyPath
+
+
+
+sudo cp $KeyPath /home/$1/.ssh/authorized_keys
+
+sudo chmod 700 /home/$1/.ssh
+sudo chmod 600 /home/$1/.ssh/authorized_keys
+
+sudo chown -R $1:$1 /home/$1/.ssh
+
+
+
+
